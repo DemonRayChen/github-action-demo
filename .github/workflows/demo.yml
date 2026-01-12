@@ -24,8 +24,18 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACTION_TOKEN }}
-          publish_dir: ./dist
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.ACTION_TOKEN }}
+      #     publish_dir: ./dist
+
+      - name: deploy project
+        uses: easingthemes/ssh-deploy@v2.2.11
+        with: 
+          SSH_PRIVATE_KEY: ${{ secrets.REMOTE_KEY }}
+          ARGS: '-avzr --delete'
+          SOURCE: 'build'
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: 'deployeruser'
+          TARGET: '/var/www/html/github-action.html'
