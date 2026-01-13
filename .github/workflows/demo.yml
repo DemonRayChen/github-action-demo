@@ -33,7 +33,7 @@ jobs:
       - name: deploy project
         uses: easingthemes/ssh-deploy@v2.2.11
         with: 
-          remote_host: ${{ secrets.REMOTE_HOST }}'
+          remote_host: ${{ secrets.REMOTE_HOST }}
           remote_user: ${{ secrets.REMOTE_USER }}
           ssh_private_key: ${{ secrets.REMOTE_KEY }}
           # args: '-avzr --delete'
