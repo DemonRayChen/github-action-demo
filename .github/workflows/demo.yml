@@ -18,7 +18,7 @@ jobs:
         with:
           registry: registry.rayc.top
           username: ${{ secrets.REGISTRY_USERNAME }}
-          password: ${{ secrets.REGISTRY_PASSWD }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
       
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
