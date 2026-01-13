@@ -35,6 +35,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.REMOTE_KEY }}
           script: |
+            docker login registry.rayc.top -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }}
             docker pull registry.rayc.top/${{ secrets.REGISTRY_USERNAME }}/github-action-demo:latest
             docker stop github-action-demo || true
             docker rm github-action-demo || true
