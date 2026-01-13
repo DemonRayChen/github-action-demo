@@ -37,5 +37,5 @@ jobs:
           remote_user: ${{ secrets.REMOTE_USER }}
           ssh_private_key: ${{ secrets.REMOTE_KEY }}
           # args: '-avzr --delete'
-          source: 'dist'
+          source: 'dist/'
           target: '/var/www/html/github-action.html'
