@@ -32,8 +32,8 @@ jobs:
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USERNAME }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.REMOTE_KEY }}
           script: |
             docker pull registry.rayc.top/${{ secrets.REGISTRY_USERNAME }}/github-action-demo:latest
             docker stop github-action-demo || true
