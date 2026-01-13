@@ -36,6 +36,6 @@ jobs:
           remote_host: ${{ secrets.REMOTE_HOST }}
           remote_user: 'deployuser'
           ssh_private_key: ${{ secrets.REMOTE_KEY }}
-          args: '-avzr --delete'
+          # args: '-avzr --delete'
           source: 'build'
           target: '/var/www/html/github-action.html'
