@@ -33,9 +33,9 @@ jobs:
       - name: deploy project
         uses: easingthemes/ssh-deploy@v2.2.11
         with: 
-          SSH_PRIVATE_KEY: ${{ secrets.REMOTE_KEY }}
-          ARGS: '-avzr --delete'
-          SOURCE: 'build'
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: 'deployuser'
-          TARGET: '/var/www/html/github-action.html'
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_user: 'deployuser'
+          ssh_private_key: ${{ secrets.REMOTE_KEY }}
+          args: '-avzr --delete'
+          source: 'build'
+          target: '/var/www/html/github-action.html'
