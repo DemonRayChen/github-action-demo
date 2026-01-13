@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue';
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    Uploading new content! 有一次修改,有一次修改，还在修改,又又又修改了一次，又又又又修改了
+    Uploading new content! 有一次修改,有一次修改，还在修改,又又又修改了一次，又又又又修改了，再一次
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
       <nav>
