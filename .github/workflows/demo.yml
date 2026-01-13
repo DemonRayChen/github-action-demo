@@ -16,7 +16,7 @@ jobs:
       - name: Login to Registry
         uses: docker/login-action@v3
         with:
-          registry: registry.rayc.top
+          registry: ${{ secrets.REGISTRY_HOST }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       
@@ -27,3 +27,15 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: registry.rayc.top/${{ secrets.REGISTRY_USERNAME }}/github-action-demo:latest
+
+      - name: Deploy to Remote Server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            docker pull registry.rayc.top/${{ secrets.REGISTRY_USERNAME }}/github-action-demo:latest
+            docker stop github-action-demo || true
+            docker rm github-action-demo || true
+            docker run -d --name github-action-demo -p 8080:80 registry.rayc.top/${{ secrets.REGISTRY_USERNAME }}/github-action-demo:latest
